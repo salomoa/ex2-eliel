@@ -19,14 +19,14 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @GetMapping
-        public ResponseEntity<List<ProdutoModel> > findAll(){
-          List<ProdutoModel> requeste = produtoService.findAll();
+        public ResponseEntity<List<ProdutoModel> > buscarTodosOsProdutos(){
+          List<ProdutoModel> requeste = produtoService.buscarTodosProdutos();
         return ResponseEntity.ok().body(requeste);
     }
 
     @PostMapping
-    public ResponseEntity <ProdutoModel> criarPessoa(@RequestBody ProdutoModel produtoModel){
-        ProdutoModel requeste = produtoService.criarPessoa(produtoModel);
+    public ResponseEntity <ProdutoModel> criarProdutos(@RequestBody ProdutoModel produtoModel){
+        ProdutoModel requeste = produtoService.criarProduto(produtoModel);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(produtoModel.getId())
                 .toUri();
@@ -40,17 +40,14 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<ProdutoModel> buscarId(@PathVariable Long id){
-        return  produtoService.buscarid(id);
+    public Optional<ProdutoModel> buscarProdutoPorId(@PathVariable Long id){
+        return  produtoService.buscarProdutoId(id);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity <ProdutoModel> atualizar(@PathVariable Long id, @RequestBody ProdutoModel ProdutoModel){
         ProdutoModel requeste = produtoService.atualizar(id, ProdutoModel);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
-                .path("/{id}").buildAndExpand(ProdutoModel.getId())
-                .toUri();
-        return  ResponseEntity.created(uri).body(requeste);
+        return  ResponseEntity.ok().body(requeste);
 
     }
 

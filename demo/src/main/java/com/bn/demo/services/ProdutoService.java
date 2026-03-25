@@ -14,15 +14,15 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public List<ProdutoModel> findAll(){
+    public List<ProdutoModel> buscarTodosProdutos(){
         return  produtoRepository.findAll();
     }
 
-    public ProdutoModel criarPessoa(ProdutoModel produtoModel){
+    public ProdutoModel criarProduto(ProdutoModel produtoModel){
         return  produtoRepository.save(produtoModel);
     }
 
-    public Optional<ProdutoModel> buscarid(Long id){
+    public Optional<ProdutoModel> buscarProdutoId(Long id){
         return  produtoRepository.findById(id);
     }
 
