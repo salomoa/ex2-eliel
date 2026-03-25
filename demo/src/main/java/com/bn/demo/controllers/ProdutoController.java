@@ -34,8 +34,8 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletar (@PathVariable Long id){
-        produtoService.deletar(id);
+    public ResponseEntity<?> deletarProdutos(@PathVariable Long id){
+        produtoService.deletarProduto(id);
         return ResponseEntity.noContent().build();
     }
 
@@ -45,8 +45,8 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity <ProdutoModel> atualizar(@PathVariable Long id, @RequestBody ProdutoModel ProdutoModel){
-        ProdutoModel requeste = produtoService.atualizar(id, ProdutoModel);
+    public ResponseEntity <ProdutoModel> atualizarProdutos(@PathVariable Long id, @RequestBody ProdutoModel ProdutoModel){
+        ProdutoModel requeste = produtoService.atualizarProduto(id, ProdutoModel);
         return  ResponseEntity.ok().body(requeste);
 
     }

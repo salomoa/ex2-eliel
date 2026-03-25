@@ -26,7 +26,7 @@ public class ProdutoService {
         return  produtoRepository.findById(id);
     }
 
-    public ProdutoModel atualizar(Long id, ProdutoModel produtoModel){
+    public ProdutoModel atualizarProduto(Long id, ProdutoModel produtoModel){
         ProdutoModel model = produtoRepository.findById(id).get();
         model.setPreco(produtoModel.getPreco());
         model.setEstoque(produtoModel.getEstoque());
@@ -34,7 +34,7 @@ public class ProdutoService {
         return produtoRepository.save(model);
     }
 
-    public void deletar(Long id){
+    public void deletarProduto(Long id){
         produtoRepository.deleteById(id);
     }
 
